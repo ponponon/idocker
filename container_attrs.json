@@ -1,0 +1,276 @@
+{
+    "Id": "d60ae35f168f502cd7008379880d8767e08e3808060ac3101516589266228313",
+    "Created": "2023-01-30T13:25:18.119323952Z",
+    "Path": "/tini",
+    "Args": [
+        "--",
+        "milvus",
+        "run",
+        "standalone"
+    ],
+    "State": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 4111593,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2023-01-30T13:25:18.450033367Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "Image": "sha256:59229a8d712717b432532b46b3cc922d2b86c53c1439c0a1f1eb34b2a7c4c883",
+    "ResolvConfPath": "/var/lib/docker/containers/d60ae35f168f502cd7008379880d8767e08e3808060ac3101516589266228313/resolv.conf",
+    "HostnamePath": "/var/lib/docker/containers/d60ae35f168f502cd7008379880d8767e08e3808060ac3101516589266228313/hostname",
+    "HostsPath": "/var/lib/docker/containers/d60ae35f168f502cd7008379880d8767e08e3808060ac3101516589266228313/hosts",
+    "LogPath": "/var/lib/docker/containers/d60ae35f168f502cd7008379880d8767e08e3808060ac3101516589266228313/d60ae35f168f502cd7008379880d8767e08e3808060ac3101516589266228313-json.log",
+    "Name": "/milvus-standalone",
+    "RestartCount": 0,
+    "Driver": "overlay2",
+    "Platform": "linux",
+    "MountLabel": "",
+    "ProcessLabel": "",
+    "AppArmorProfile": "docker-default",
+    "ExecIDs": null,
+    "HostConfig": {
+        "Binds": [
+            "/home/pon/opt/docker-compose-public/milvus/volumes/milvus:/var/lib/milvus:rw"
+        ],
+        "ContainerIDFile": "",
+        "LogConfig": {
+            "Type": "json-file",
+            "Config": {
+                "max-file": "1",
+                "max-size": "50m"
+            }
+        },
+        "NetworkMode": "milvus",
+        "PortBindings": {
+            "19530/tcp": [
+                {
+                    "HostIp": "",
+                    "HostPort": "19530"
+                }
+            ],
+            "9091/tcp": [
+                {
+                    "HostIp": "",
+                    "HostPort": "9091"
+                }
+            ]
+        },
+        "RestartPolicy": {
+            "Name": "always",
+            "MaximumRetryCount": 0
+        },
+        "AutoRemove": false,
+        "VolumeDriver": "",
+        "VolumesFrom": [],
+        "CapAdd": null,
+        "CapDrop": null,
+        "CgroupnsMode": "private",
+        "Dns": null,
+        "DnsOptions": null,
+        "DnsSearch": null,
+        "ExtraHosts": null,
+        "GroupAdd": null,
+        "IpcMode": "private",
+        "Cgroup": "",
+        "Links": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyRootfs": false,
+        "SecurityOpt": null,
+        "UTSMode": "",
+        "UsernsMode": "",
+        "ShmSize": 67108864,
+        "Runtime": "runc",
+        "ConsoleSize": [
+            0,
+            0
+        ],
+        "Isolation": "",
+        "CpuShares": 0,
+        "Memory": 0,
+        "NanoCpus": 0,
+        "CgroupParent": "",
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": null,
+        "BlkioDeviceReadBps": null,
+        "BlkioDeviceWriteBps": null,
+        "BlkioDeviceReadIOps": null,
+        "BlkioDeviceWriteIOps": null,
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "Devices": null,
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "KernelMemory": 0,
+        "KernelMemoryTCP": 0,
+        "MemoryReservation": 0,
+        "MemorySwap": 0,
+        "MemorySwappiness": null,
+        "OomKillDisable": null,
+        "PidsLimit": null,
+        "Ulimits": null,
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "IOMaximumIOps": 0,
+        "IOMaximumBandwidth": 0,
+        "MaskedPaths": [
+            "/proc/asound",
+            "/proc/acpi",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/sys/firmware"
+        ],
+        "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+        ]
+    },
+    "GraphDriver": {
+        "Data": {
+            "LowerDir": "/var/lib/docker/overlay2/b81ec8d69edc5e7b252fa784c72df9498d9977f50e89ed06a964a95b676bab87-init/diff:/var/lib/docker/overlay2/87aa101bb7df27fc59a7a2a748d46340aefbac4d9bb0fd5578e9054c23469c6c/diff:/var/lib/docker/overlay2/8febcd93c18cf36fd64c2327f7c36099714e5530177e6a0c5cc804718def495e/diff:/var/lib/docker/overlay2/a96cb95cc88d01bc52002aef8e140d25721d493f7108c76fa12193b305007a03/diff:/var/lib/docker/overlay2/eb052b86338b2202d0ff1c3a7b8fb6b5ceb91261bef5cc4d9fe9703c1296c7e9/diff:/var/lib/docker/overlay2/2bfa1791ac7300b7aff05e5ace26704346721e0c141f92e4db6462187d9d95ef/diff:/var/lib/docker/overlay2/c56fb1489c6b2ee9bd2d743064cad2f57bed31e7a1cdeee56df832c60c5a3cdb/diff:/var/lib/docker/overlay2/fc4d2889d723b6a5d78f3dfd26362a834d1266b57dfd79d12d35c4f19f79c7bc/diff:/var/lib/docker/overlay2/628202fddad9e27d1c6ef9ecc2d684801542f3ae07ffc483fc0af5492ce4ca06/diff:/var/lib/docker/overlay2/11524201dcb8cab4afe76fd8483f53882542311219647e99b6581669fcca01ed/diff:/var/lib/docker/overlay2/d03b5a210c83a825e642a8be8de44f18cc72fc4f0886b34528ad55b2ed9477bc/diff",
+            "MergedDir": "/var/lib/docker/overlay2/b81ec8d69edc5e7b252fa784c72df9498d9977f50e89ed06a964a95b676bab87/merged",
+            "UpperDir": "/var/lib/docker/overlay2/b81ec8d69edc5e7b252fa784c72df9498d9977f50e89ed06a964a95b676bab87/diff",
+            "WorkDir": "/var/lib/docker/overlay2/b81ec8d69edc5e7b252fa784c72df9498d9977f50e89ed06a964a95b676bab87/work"
+        },
+        "Name": "overlay2"
+    },
+    "Mounts": [
+        {
+            "Type": "bind",
+            "Source": "/home/pon/opt/docker-compose-public/milvus/volumes/milvus",
+            "Destination": "/var/lib/milvus",
+            "Mode": "rw",
+            "RW": true,
+            "Propagation": "rprivate"
+        }
+    ],
+    "Config": {
+        "Hostname": "d60ae35f168f",
+        "Domainname": "",
+        "User": "",
+        "AttachStdin": false,
+        "AttachStdout": false,
+        "AttachStderr": false,
+        "ExposedPorts": {
+            "19530/tcp": {},
+            "9091/tcp": {}
+        },
+        "Tty": false,
+        "OpenStdin": false,
+        "StdinOnce": false,
+        "Env": [
+            "ETCD_ENDPOINTS=etcd:2379",
+            "MINIO_ADDRESS=minio:9000",
+            "PATH=/milvus/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "DEBIAN_FRONTEND=noninteractive",
+            "TZ=UTC",
+            "LD_LIBRARY_PATH=/milvus/lib::/usr/lib",
+            "LD_PRELOAD=/milvus/lib/libjemalloc.so"
+        ],
+        "Cmd": [
+            "milvus",
+            "run",
+            "standalone"
+        ],
+        "Image": "milvusdb/milvus:v2.2.2",
+        "Volumes": {
+            "/var/lib/milvus": {}
+        },
+        "WorkingDir": "/milvus",
+        "Entrypoint": [
+            "/tini",
+            "--"
+        ],
+        "OnBuild": null,
+        "Labels": {
+            "com.docker.compose.config-hash": "94b4e7c33fdae29f940ba1c685716cbb4872dddd80ff2e51408cb402d6c01118",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "milvus",
+            "com.docker.compose.project.config_files": "docker-compose.yaml",
+            "com.docker.compose.project.working_dir": "/home/pon/opt/docker-compose-public/milvus",
+            "com.docker.compose.service": "standalone",
+            "com.docker.compose.version": "1.29.2"
+        }
+    },
+    "NetworkSettings": {
+        "Bridge": "",
+        "SandboxID": "8b98a86e5d0d0b7dc1db0d8fc0d8f92f4ffd6f3cbd43e6d94d597cff11bfe89a",
+        "HairpinMode": false,
+        "LinkLocalIPv6Address": "",
+        "LinkLocalIPv6PrefixLen": 0,
+        "Ports": {
+            "19530/tcp": [
+                {
+                    "HostIp": "0.0.0.0",
+                    "HostPort": "19530"
+                },
+                {
+                    "HostIp": "::",
+                    "HostPort": "19530"
+                }
+            ],
+            "9091/tcp": [
+                {
+                    "HostIp": "0.0.0.0",
+                    "HostPort": "9091"
+                },
+                {
+                    "HostIp": "::",
+                    "HostPort": "9091"
+                }
+            ]
+        },
+        "SandboxKey": "/var/run/docker/netns/8b98a86e5d0d",
+        "SecondaryIPAddresses": null,
+        "SecondaryIPv6Addresses": null,
+        "EndpointID": "",
+        "Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "IPAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "MacAddress": "",
+        "Networks": {
+            "milvus": {
+                "IPAMConfig": null,
+                "Links": null,
+                "Aliases": [
+                    "standalone",
+                    "d60ae35f168f"
+                ],
+                "NetworkID": "0cbcbd93e827c68933c9be7a0d4340def7d93ca02a9ab3a8a106f69ac718b964",
+                "EndpointID": "91e1d10f419de8772a4d6f00a4a2477a660d470c4e066393f5de0fd7e45e8be7",
+                "Gateway": "172.21.1.1",
+                "IPAddress": "172.21.1.5",
+                "IPPrefixLen": 24,
+                "IPv6Gateway": "",
+                "GlobalIPv6Address": "",
+                "GlobalIPv6PrefixLen": 0,
+                "MacAddress": "02:42:ac:15:01:05",
+                "DriverOpts": null
+            }
+        }
+    }
+}
