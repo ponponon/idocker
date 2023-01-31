@@ -1,4 +1,3 @@
-
 from typing import List, Dict
 from concurrent.futures.thread import ThreadPoolExecutor
 import click
