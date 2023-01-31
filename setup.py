@@ -19,8 +19,14 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/ponponon/idocker",
     packages=setuptools.find_packages(),
+    entry_points={
+        'console_scripts': [
+            'idocker=idocker.cli.main:cli',
+        ]
+    },
     install_requires=[
-        "docker"
+        'docker',
+        'click'
     ],
     classifiers=[
         "Programming Language :: Python",

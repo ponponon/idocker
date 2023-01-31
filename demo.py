@@ -1,6 +1,5 @@
 from typing import List, Dict
 from concurrent.futures.thread import ThreadPoolExecutor
-import json
 import docker
 from docker.models.containers import Container
 
