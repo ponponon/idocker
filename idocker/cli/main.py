@@ -47,7 +47,7 @@ def ps():
 
     containers_info: List[List[str]] = []
 
-    pool = ThreadPoolExecutor(max_workers=10)
+    pool = ThreadPoolExecutor(max_workers=30)
 
     for container in containers[:]:
         pool.submit(get_container_info, container)
