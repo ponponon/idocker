@@ -2,7 +2,11 @@ from typing import List, Dict
 from concurrent.futures.thread import ThreadPoolExecutor
 import click
 import docker
+from rich.console import Console
 from docker.models.containers import Container
+
+
+console = Console()
 
 
 @click.group()
@@ -43,7 +47,7 @@ def ps():
 
     containers = client.containers.list(all=True)
 
-    print(f'There is a total of {len(containers)} container')
+    console.print(f'There is a total of {len(containers)} container')
 
     containers_info: List[List[str]] = []
 
@@ -57,7 +61,7 @@ def ps():
     containers_info.sort(key=lambda x: x[2])
 
     for container_info in containers_info:
-        print('   '.join(container_info))
+        console.print('   '.join(container_info))
 
 
 cli = click.CommandCollection(sources=[idocker_cli])
