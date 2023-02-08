@@ -26,7 +26,8 @@ setuptools.setup(
     },
     install_requires=[
         'docker',
-        'click'
+        'click',
+        'rich'
     ],
     classifiers=[
         "Programming Language :: Python",
