@@ -6,6 +6,13 @@ from rich.console import Console
 from docker.models.containers import Container
 
 
+def removeprefix(s: str, prefix: str) -> str:
+    if s.startswith(prefix):
+        return s[len(prefix):]
+    else:
+        return s
+
+
 console = Console()
 
 
@@ -38,7 +45,7 @@ def ps():
             [
                 short_id,
                 status.ljust(8, " "),
-                name.ljust(25, " "),
+                removeprefix(name.ljust(25, " "), '/'),
                 memory_stats__usage.rjust(10, " "),
             ]
         )
