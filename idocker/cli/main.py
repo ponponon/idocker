@@ -51,7 +51,7 @@ def ps():
             [
                 short_id,
                 status.ljust(8, " "),
-                removeprefix(name.ljust(25, " "), '/'),
+                removeprefix(name.ljust(27, " "), '/'),
                 memory_stats__usage.rjust(10, " "),
                 cpu_stats__usage.rjust(10, " "),
             ]
@@ -73,6 +73,15 @@ def ps():
     pool.shutdown(wait=True)
 
     containers_info.sort(key=lambda x: x[2])
+
+    containers_info.insert(
+        0, [
+            'container id',
+            'status'.ljust(8, " "),
+            removeprefix('container name'.ljust(26, " "), '/'),
+            'memory'.rjust(10, " "),
+            'cpu'.rjust(10, " "),
+        ])
 
     for container_info in containers_info:
         console.print('   '.join(container_info))
