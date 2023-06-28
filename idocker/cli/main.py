@@ -41,12 +41,19 @@ def ps():
             else:
                 memory_stats__usage: str = f'{round(mb/1024,2)} GB'
 
+        cpu_usage = container_stats['cpu_stats']['cpu_usage']['total_usage']
+        system_cpu_usage = container_stats['cpu_stats']['system_cpu_usage']
+        cpu_percent = (cpu_usage / system_cpu_usage) * 100
+        cpu_count = container_stats['cpu_stats']['online_cpus']
+        cpu_stats__usage = f"{cpu_percent*cpu_count:.2f}%"
+
         containers_info.append(
             [
                 short_id,
                 status.ljust(8, " "),
                 removeprefix(name.ljust(25, " "), '/'),
                 memory_stats__usage.rjust(10, " "),
+                cpu_stats__usage.rjust(10, " "),
             ]
         )
 
