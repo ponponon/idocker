@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Optional
 from concurrent.futures.thread import ThreadPoolExecutor
 import click
 import docker
@@ -85,6 +85,45 @@ def ps():
 
     for container_info in containers_info:
         console.print('   '.join(container_info))
+
+
+@idocker_cli.command()
+def port():
+    client = docker.from_env()
+
+    containers: List[Container] = client.containers.list(all=True)
+
+    console.print(f'There is a total of {len(containers)} container')
+
+    for container in containers:
+        try:
+            container_info = client.containers.get(container.id)
+            # ports like:
+            # - {'3000/tcp': [{'HostIp': '0.0.0.0', 'HostPort': '8000'}, {'HostIp': '::', 'HostPort': '8000'}]}
+            # - {'2379/tcp': None, '2380/tcp': None}
+            ports = container_info.attrs['NetworkSettings']['Ports']
+
+            ports: Dict[str, Optional[List[Dict[str, str]]]]
+
+            console.print(container.name, style="#c2a064")
+
+            if not ports:
+                console.print("    no network config", style='#c85662')
+                continue
+
+            console.print(
+                f"    {'Host'.ljust(8, ' ')} -> {'Container'.ljust(8, ' ')}", style='#62ae90')
+            for port in ports:
+                mappings = ports.get(port, [])
+                if not mappings:
+                    # console.print("    no port bind")
+                    continue
+                for mapping in mappings:
+                    host_port = f"{mapping['HostPort']}".ljust(8, ' ')
+                    container_port = f"{mapping['HostPort']}".ljust(8, ' ')
+                    console.print(f"    {host_port} -> {container_port}")
+        finally:
+            print()
 
 
 cli = click.CommandCollection(sources=[idocker_cli])
