@@ -2,38 +2,38 @@
 
 [简体中文](./README.zh-CN.md) | [English](./README.md)
 
-## Introduce
+## 介绍
 
-This tool is a supplement to docker's official command line tool and can output container information in a human-friendly way to increase readability
+这个工具是 docker 官方命令行工具的补充版本，可以人类友好的方式输出容器信息，增加可读性
 
 ⭐️ 🌟 ✨ ⚡️ ☄️ 💥
 
-## Installation
+## 安装
 
-Package is uploaded on PyPI: [idocker](https://pypi.org/project/idocker/)
+软件包已经上传到 PyPI: [idocker](https://pypi.org/project/idocker/)
 
-You can install it with pip:
+可以直接使用 pip 安装:
 
 ```shell
 pip install idocker
 ```
 
-## Requirements
+## 依赖
 
-- Python : 3.8 and newer
-- Make sure you have docker installed on your machine
+- Python : 3.8 及以上
+- 确保你的机器已经安装了 docker
 
-## Documentation
+## 文档
 
-📄 Intensified preparation in progress
+📄 暂无
 
-## Example
+## 示例
 
-### View container running information
+### 查看容器运行状态
 
-Enter the command in the terminal: `idocker ps`
+可以在终端输入: `idocker ps`
 
-The following output is obtained
+输出如下：
 
 ```shell
 There is a total of 23 container
@@ -58,11 +58,11 @@ e0f2cbb05d47   running    rebloom                        13.14 MB        0.23%
 1cd01a299204   running    zilliz_attu                   112.78 MB        0.02%
 ```
 
-### View container port information
+### 查看容器绑定的端口信息
 
-Enter the command in the terminal: `idocker port`
+可以在终端输入: `idocker port`
 
-The following output is obtained
+输出如下：
 
 ```shell
 There is a total of 3 container
