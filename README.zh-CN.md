@@ -1,8 +1,8 @@
 # idocker
 
 <p align="center">
-    <!-- <a href="https://github.com/Lancetnik/idocker/actions/workflows/tests.yml" target="_blank">
-        <img src="https://github.com/Lancetnik/idocker/actions/workflows/tests.yml/badge.svg" alt="Tests coverage"/>
+    <!-- <a href="https://github.com/ponponon/idocker/actions/workflows/tests.yml" target="_blank">
+        <img src="https://github.com/ponponon/idocker/actions/workflows/tests.yml/badge.svg" alt="Tests coverage"/>
     </a>
     <a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/lancetnik/idocker" target="_blank">
         <img src="https://coverage-badge.samuelcolvin.workers.dev/lancetnik/idocker.svg" alt="Coverage">
@@ -17,8 +17,8 @@
     <a href="https://pypi.org/project/fast-depend" target="_blank">
         <img src="https://img.shields.io/pypi/pyversions/idocker.svg" alt="Supported Python versions">
     </a>
-    <a href="https://github.com/Lancetnik/idocker/blob/master/LICENSE" target="_blank">
-        <img alt="GitHub" src="https://img.shields.io/github/license/Lancetnik/idocker?color=%23007ec6">
+    <a href="https://github.com/ponponon/idocker/blob/master/LICENSE" target="_blank">
+        <img alt="GitHub" src="https://img.shields.io/github/license/ponponon/idocker?color=%23007ec6">
     </a>
 </p>
 
