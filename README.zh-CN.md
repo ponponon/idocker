@@ -17,7 +17,7 @@
     <a href="https://pypi.org/project/fast-depend" target="_blank">
         <img src="https://img.shields.io/pypi/pyversions/idocker.svg" alt="Supported Python versions">
     </a>
-    <a href="https://github.com/Lancetnik/idocker/blob/main/LICENSE" target="_blank">
+    <a href="https://github.com/Lancetnik/idocker/blob/master/LICENSE" target="_blank">
         <img alt="GitHub" src="https://img.shields.io/github/license/Lancetnik/idocker?color=%23007ec6">
     </a>
 </p>
