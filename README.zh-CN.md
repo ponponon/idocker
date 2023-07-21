@@ -1,5 +1,27 @@
 # idocker
 
+<p align="center">
+    <!-- <a href="https://github.com/Lancetnik/idocker/actions/workflows/tests.yml" target="_blank">
+        <img src="https://github.com/Lancetnik/idocker/actions/workflows/tests.yml/badge.svg" alt="Tests coverage"/>
+    </a>
+    <a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/lancetnik/idocker" target="_blank">
+        <img src="https://coverage-badge.samuelcolvin.workers.dev/lancetnik/idocker.svg" alt="Coverage">
+    </a> -->
+    <a href="https://pypi.org/project/idocker" target="_blank">
+        <img src="https://img.shields.io/pypi/v/idocker?label=pypi%20package" alt="Package version">
+    </a>
+    <a href="https://pepy.tech/project/idocker" target="_blank">
+        <img src="https://static.pepy.tech/personalized-badge/idocker?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads" alt="downloads"/>
+    </a>
+    <br/>
+    <a href="https://pypi.org/project/fast-depend" target="_blank">
+        <img src="https://img.shields.io/pypi/pyversions/idocker.svg" alt="Supported Python versions">
+    </a>
+    <a href="https://github.com/Lancetnik/idocker/blob/main/LICENSE" target="_blank">
+        <img alt="GitHub" src="https://img.shields.io/github/license/Lancetnik/idocker?color=%23007ec6">
+    </a>
+</p>
+
 [简体中文](./README.zh-CN.md) | [English](./README.md)
 
 ## 介绍
