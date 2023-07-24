@@ -40,12 +40,14 @@ def ps():
                 memory_stats__usage: str = f'{round(mb,2)} MB'
             else:
                 memory_stats__usage: str = f'{round(mb/1024,2)} GB'
-
-        cpu_usage = container_stats['cpu_stats']['cpu_usage']['total_usage']
-        system_cpu_usage = container_stats['cpu_stats']['system_cpu_usage']
-        cpu_percent = (cpu_usage / system_cpu_usage) * 100
-        cpu_count = container_stats['cpu_stats']['online_cpus']
-        cpu_stats__usage = f"{cpu_percent*cpu_count:.2f}%"
+        if status == 'running':
+            cpu_usage = container_stats['cpu_stats']['cpu_usage']['total_usage']
+            system_cpu_usage = container_stats['cpu_stats']['system_cpu_usage']
+            cpu_percent = (cpu_usage / system_cpu_usage) * 100
+            cpu_count = container_stats['cpu_stats']['online_cpus']
+            cpu_stats__usage = f"{cpu_percent*cpu_count:.2f}%"
+        else:
+            cpu_stats__usage = 'None'
 
         containers_info.append(
             [
