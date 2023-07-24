@@ -1,4 +1,5 @@
 import setuptools
+from setuptools import find_packages
 
 with open("README.md", "r") as f:
     long_description = f.read()
@@ -18,7 +19,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ponponon/idocker",
-    packages=['idocker'],
+    packages=find_packages(),
     entry_points={
         'console_scripts': [
             'idocker=idocker.cli.main:cli',
