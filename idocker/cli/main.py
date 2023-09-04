@@ -87,6 +87,9 @@ def ps():
 
     for container_info in containers_info:
         console.print('   '.join(container_info))
+    
+    from tabulate import tabulate
+    print(tabulate(containers_info, headers=["id", "status","name",'memory','cpu'], tablefmt="pipe"))
 
 
 @idocker_cli.command()
@@ -124,6 +127,8 @@ def port():
                     host_port = f"{mapping['HostPort']}".ljust(8, ' ')
                     container_port = f"{mapping['HostPort']}".ljust(8, ' ')
                     console.print(f"    {host_port} -> {container_port}")
+            
+
         finally:
             print()
 
