@@ -43,21 +43,17 @@ def ps(
         container_stats: Dict = container.stats(decode=True).__next__()
 
         if not container_stats['memory_stats'].get('usage', None):
-            memory_stats__usage = '-'
+            mb = 0
         else:
-            mb = container_stats['memory_stats']['usage']/1024/1024
+            mb = float(container_stats['memory_stats']['usage'])
 
-            if mb < 1024:
-                memory_stats__usage: str = f'{round(mb,2)} MB'
-            else:
-                memory_stats__usage: str = f'{round(mb/1024,2)} GB'
         if status == 'running':
             status = '✅'+status
             cpu_usage = container_stats['cpu_stats']['cpu_usage']['total_usage']
             system_cpu_usage = container_stats['cpu_stats']['system_cpu_usage']
             cpu_percent = (cpu_usage / system_cpu_usage) * 100
             cpu_count = container_stats['cpu_stats']['online_cpus']
-            cpu_stats__usage = round(cpu_percent*cpu_count, 3)
+            cpu_stats__usage: float = round(cpu_percent*cpu_count, 3)
         else:
             status = '⭕️'+status
             cpu_stats__usage = 0
@@ -67,7 +63,7 @@ def ps(
                 short_id,
                 status,
                 removeprefix(name, '/'),
-                memory_stats__usage,
+                mb,
                 cpu_stats__usage,
             ]
         )
@@ -99,6 +95,14 @@ def ps(
         containers_info.sort(key=lambda x: x[4])
 
     from tabulate import tabulate
+
+    for ci in containers_info:
+        mb = ci[3]/1024/1024
+        if mb < 1024:
+            memory_stats__usage: str = f'{round(mb,2)} MB'
+        else:
+            memory_stats__usage: str = f'{round(mb/1024,2)} GB'
+        ci[3] = memory_stats__usage
 
     print(tabulate(containers_info, headers=[
           "id", "status", "name", 'memory', 'cpu (%)'], tablefmt="pipe"))
