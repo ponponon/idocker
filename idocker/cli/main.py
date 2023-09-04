@@ -22,7 +22,18 @@ def idocker_cli():
 
 
 @idocker_cli.command()
-def ps():
+@click.option('--id', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by id')
+@click.option('--status', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by id')
+@click.option('--name', type=bool, is_flag=True, show_default=True, default=True, help='Sort by name')
+@click.option('--cpu', type=bool, is_flag=True, show_default=True, default=False, help='Sort by cpu stats usage')
+@click.option('--mem', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by memory stats usage')
+def ps(
+    id: bool = False,
+    status: bool = False,
+    name: bool = True,
+    cpu: bool = False,
+    mem: bool = False,
+):
     """ view all container """
     def get_container_info(container: Container):
         short_id: str = container.short_id
@@ -51,16 +62,6 @@ def ps():
             status = '⭕️'+status
             cpu_stats__usage = 0
 
-        # containers_info.append(
-        #     [
-        #         short_id,
-        #         status.ljust(8, " "),
-        #         removeprefix(name.ljust(27, " "), '/'),
-        #         memory_stats__usage.rjust(10, " "),
-        #         cpu_stats__usage.rjust(10, " "),
-        #     ]
-        # )
-
         containers_info.append(
             [
                 short_id,
@@ -86,19 +87,16 @@ def ps():
 
     pool.shutdown(wait=True)
 
-    containers_info.sort(key=lambda x: x[2])
-
-    # containers_info.insert(
-    #     0, [
-    #         'container id',
-    #         'status'.ljust(8, " "),
-    #         removeprefix('container name'.ljust(26, " "), '/'),
-    #         'memory'.rjust(10, " "),
-    #         'cpu'.rjust(10, " "),
-    #     ])
-
-    # for container_info in containers_info:
-    #     console.print('   '.join(container_info))
+    if id:
+        containers_info.sort(key=lambda x: x[0])
+    if status:
+        containers_info.sort(key=lambda x: x[1])
+    if name:
+        containers_info.sort(key=lambda x: x[2])
+    if mem:
+        containers_info.sort(key=lambda x: x[3])
+    if cpu:
+        containers_info.sort(key=lambda x: x[4])
 
     from tabulate import tabulate
 
