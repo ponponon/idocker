@@ -24,15 +24,17 @@ def idocker_cli():
 @idocker_cli.command()
 @click.option('--id', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by id')
 @click.option('--status', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by id')
-@click.option('--name', type=bool, is_flag=True, show_default=True, default=True, help='Sort by name')
+@click.option('--name', type=bool, is_flag=True, show_default=True, default=False, help='Sort by name')
 @click.option('--cpu', type=bool, is_flag=True, show_default=True, default=False, help='Sort by cpu stats usage')
-@click.option('--mem', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by memory stats usage')
+@click.option('--mem', type=bool, is_flag=True,  show_default=True, default=True, help='Sort by memory stats usage')
+@click.option('-i', '--image_name', type=bool, is_flag=True,  show_default=True, default=False, help='Show Image name')
 def ps(
     id: bool = False,
     status: bool = False,
     name: bool = True,
     cpu: bool = False,
     mem: bool = False,
+    image_name: bool = False,
 ):
     """ view all container """
     def get_container_info(container: Container):
@@ -110,9 +112,12 @@ def ps(
         else:
             memory_stats__usage: str = f'{round(mb/1024,2)} GB'
         ci[3] = memory_stats__usage
-
-    print(tabulate(containers_info, headers=[
-          "id", "status", "name", 'memory', 'cpu (%)', 'image'], tablefmt="pipe"))
+    if image_name:
+        print(tabulate(containers_info, headers=[
+            "id", "status", "name", 'memory', 'cpu (%)', 'image'], tablefmt="pipe"))
+    else:
+        print(tabulate([i[:-1] for i in containers_info], headers=[
+            "id", "status", "name", 'memory', 'cpu (%)'], tablefmt="pipe"))
 
 
 @idocker_cli.command()
