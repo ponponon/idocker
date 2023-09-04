@@ -1,4 +1,4 @@
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Union
 from concurrent.futures.thread import ThreadPoolExecutor
 import click
 import docker
@@ -65,6 +65,16 @@ def ps(
         else:
             status = '⭕️ '+status
             cpu_stats__usage = 0
+        import json
+        print(json.dumps(container_stats, indent=4))
+
+        disk_usage: List[Dict[str, Union[int, str]]
+                         ] = container_stats['blkio_stats']['io_service_bytes_recursive']
+
+        total_disk_usage = sum([i['value'] for i in disk_usage]) \
+            if disk_usage else 0
+
+        # print(total_disk_usage)
 
         containers_info.append(
             [
