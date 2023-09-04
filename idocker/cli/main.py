@@ -40,6 +40,12 @@ def ps(
         status: str = container.attrs['State']['Status']
         name: str = container.attrs['Name']
 
+        from docker.models.images import Image
+
+        image: Image = container.image
+
+        image_name = image.tags[0] if image.tags else image.short_id
+
         container_stats: Dict = container.stats(decode=True).__next__()
 
         if not container_stats['memory_stats'].get('usage', None):
@@ -48,14 +54,14 @@ def ps(
             mb = float(container_stats['memory_stats']['usage'])
 
         if status == 'running':
-            status = '✅'+status
+            status = '✅ '+status
             cpu_usage = container_stats['cpu_stats']['cpu_usage']['total_usage']
             system_cpu_usage = container_stats['cpu_stats']['system_cpu_usage']
             cpu_percent = (cpu_usage / system_cpu_usage) * 100
             cpu_count = container_stats['cpu_stats']['online_cpus']
             cpu_stats__usage: float = round(cpu_percent*cpu_count, 3)
         else:
-            status = '⭕️'+status
+            status = '⭕️ '+status
             cpu_stats__usage = 0
 
         containers_info.append(
@@ -65,6 +71,7 @@ def ps(
                 removeprefix(name, '/'),
                 mb,
                 cpu_stats__usage,
+                image_name
             ]
         )
 
@@ -105,7 +112,7 @@ def ps(
         ci[3] = memory_stats__usage
 
     print(tabulate(containers_info, headers=[
-          "id", "status", "name", 'memory', 'cpu (%)'], tablefmt="pipe"))
+          "id", "status", "name", 'memory', 'cpu (%)', 'image'], tablefmt="pipe"))
 
 
 @idocker_cli.command()
