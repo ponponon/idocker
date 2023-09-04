@@ -32,7 +32,7 @@ def ps():
         container_stats: Dict = container.stats(decode=True).__next__()
 
         if not container_stats['memory_stats'].get('usage', None):
-            memory_stats__usage = 'None'
+            memory_stats__usage = ''
         else:
             mb = container_stats['memory_stats']['usage']/1024/1024
 
@@ -41,21 +41,33 @@ def ps():
             else:
                 memory_stats__usage: str = f'{round(mb/1024,2)} GB'
         if status == 'running':
+            status = '✅'+status
             cpu_usage = container_stats['cpu_stats']['cpu_usage']['total_usage']
             system_cpu_usage = container_stats['cpu_stats']['system_cpu_usage']
             cpu_percent = (cpu_usage / system_cpu_usage) * 100
             cpu_count = container_stats['cpu_stats']['online_cpus']
             cpu_stats__usage = f"{cpu_percent*cpu_count:.2f}%"
         else:
-            cpu_stats__usage = 'None'
+            status = '⭕️'+status
+            cpu_stats__usage = ''
+
+        # containers_info.append(
+        #     [
+        #         short_id,
+        #         status.ljust(8, " "),
+        #         removeprefix(name.ljust(27, " "), '/'),
+        #         memory_stats__usage.rjust(10, " "),
+        #         cpu_stats__usage.rjust(10, " "),
+        #     ]
+        # )
 
         containers_info.append(
             [
                 short_id,
-                status.ljust(8, " "),
-                removeprefix(name.ljust(27, " "), '/'),
-                memory_stats__usage.rjust(10, " "),
-                cpu_stats__usage.rjust(10, " "),
+                status,
+                removeprefix(name, '/'),
+                memory_stats__usage,
+                cpu_stats__usage,
             ]
         )
 
@@ -76,20 +88,24 @@ def ps():
 
     containers_info.sort(key=lambda x: x[2])
 
-    containers_info.insert(
-        0, [
-            'container id',
-            'status'.ljust(8, " "),
-            removeprefix('container name'.ljust(26, " "), '/'),
-            'memory'.rjust(10, " "),
-            'cpu'.rjust(10, " "),
-        ])
+    # containers_info.insert(
+    #     0, [
+    #         'container id',
+    #         'status'.ljust(8, " "),
+    #         removeprefix('container name'.ljust(26, " "), '/'),
+    #         'memory'.rjust(10, " "),
+    #         'cpu'.rjust(10, " "),
+    #     ])
 
-    for container_info in containers_info:
-        console.print('   '.join(container_info))
-    
+    # for container_info in containers_info:
+    #     console.print('   '.join(container_info))
+
     from tabulate import tabulate
-    print(tabulate(containers_info, headers=["id", "status","name",'memory','cpu'], tablefmt="pipe"))
+
+    alignments = ["left"] * 3
+
+    print(tabulate(containers_info, headers=[
+          "id", "status", "name", 'memory', 'cpu'], tablefmt="pipe", stralign=alignments))
 
 
 @idocker_cli.command()
@@ -127,7 +143,6 @@ def port():
                     host_port = f"{mapping['HostPort']}".ljust(8, ' ')
                     container_port = f"{mapping['HostPort']}".ljust(8, ' ')
                     console.print(f"    {host_port} -> {container_port}")
-            
 
         finally:
             print()
