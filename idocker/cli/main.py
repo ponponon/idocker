@@ -46,10 +46,10 @@ def ps():
             system_cpu_usage = container_stats['cpu_stats']['system_cpu_usage']
             cpu_percent = (cpu_usage / system_cpu_usage) * 100
             cpu_count = container_stats['cpu_stats']['online_cpus']
-            cpu_stats__usage = f"{cpu_percent*cpu_count:.2f}%"
+            cpu_stats__usage = round(cpu_percent*cpu_count, 3)
         else:
             status = '⭕️'+status
-            cpu_stats__usage = '-'
+            cpu_stats__usage = 0
 
         # containers_info.append(
         #     [
@@ -102,10 +102,8 @@ def ps():
 
     from tabulate import tabulate
 
-    alignments = ["left"] * 3
-
     print(tabulate(containers_info, headers=[
-          "id", "status", "name", 'memory', 'cpu'], tablefmt="pipe", stralign=alignments))
+          "id", "status", "name", 'memory', 'cpu (%)'], tablefmt="pipe"))
 
 
 @idocker_cli.command()
