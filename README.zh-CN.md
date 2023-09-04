@@ -14,7 +14,7 @@
         <img src="https://static.pepy.tech/personalized-badge/idocker?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads" alt="downloads"/>
     </a>
     <br/>
-    <a href="https://pypi.org/project/fast-depend" target="_blank">
+    <a href="https://pypi.org/project/idocker" target="_blank">
         <img src="https://img.shields.io/pypi/pyversions/idocker.svg" alt="Supported Python versions">
     </a>
     <a href="https://github.com/ponponon/idocker/blob/master/LICENSE" target="_blank">
