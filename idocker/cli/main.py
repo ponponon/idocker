@@ -32,7 +32,7 @@ def ps():
         container_stats: Dict = container.stats(decode=True).__next__()
 
         if not container_stats['memory_stats'].get('usage', None):
-            memory_stats__usage = ''
+            memory_stats__usage = '-'
         else:
             mb = container_stats['memory_stats']['usage']/1024/1024
 
@@ -49,7 +49,7 @@ def ps():
             cpu_stats__usage = f"{cpu_percent*cpu_count:.2f}%"
         else:
             status = '⭕️'+status
-            cpu_stats__usage = ''
+            cpu_stats__usage = '-'
 
         # containers_info.append(
         #     [
