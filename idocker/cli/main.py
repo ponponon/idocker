@@ -4,6 +4,7 @@ import click
 import docker
 from rich.console import Console
 from docker.models.containers import Container
+from idocker import VERSION
 
 
 def removeprefix(s: str, prefix: str) -> str:
@@ -17,6 +18,7 @@ console = Console()
 
 
 @click.group()
+@click.version_option(version=VERSION)
 def idocker_cli():
     pass
 
