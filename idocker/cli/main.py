@@ -26,7 +26,7 @@ def idocker_cli():
 @click.option('--status', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by id')
 @click.option('--name', type=bool, is_flag=True, show_default=True, default=False, help='Sort by name')
 @click.option('--cpu', type=bool, is_flag=True, show_default=True, default=False, help='Sort by cpu stats usage')
-@click.option('--mem', type=bool, is_flag=True,  show_default=True, default=True, help='Sort by memory stats usage')
+@click.option('--mem', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by memory stats usage')
 @click.option('-i', '--image_name', type=bool, is_flag=True,  show_default=True, default=False, help='Show Image name')
 def ps(
     id: bool = False,
@@ -37,6 +37,9 @@ def ps(
     image_name: bool = False,
 ):
     """ view all container """
+    if not status and not name and not cpu and not mem and not image_name:
+        mem = True
+
     def get_container_info(container: Container):
         short_id: str = container.short_id
         status: str = container.attrs['State']['Status']
