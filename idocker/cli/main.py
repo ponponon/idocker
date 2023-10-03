@@ -37,7 +37,7 @@ def ps(
     image_name: bool = False,
 ):
     """ view all container """
-    if not status and not name and not cpu and not mem and not image_name:
+    if not status and not name and not cpu and not mem:
         mem = True
 
     def get_container_info(container: Container):
