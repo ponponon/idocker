@@ -56,7 +56,8 @@ def ps(
         if not container_stats['memory_stats'].get('usage', None):
             mb = 0
         else:
-            mb = float(container_stats['memory_stats']['usage'])
+            mb = float(container_stats['memory_stats']['usage'])-float(
+                container_stats['memory_stats']['stats']['inactive_file'])
 
         if status == 'running':
             status = '✅ '+status
