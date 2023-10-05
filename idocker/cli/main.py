@@ -51,7 +51,9 @@ def ps(
 
         image_name = image.tags[0] if image.tags else image.short_id
 
-        container_stats: Dict = container.stats(decode=True).__next__()
+        stats_stream = container.stats(decode=True)
+        _ = stats_stream.__next__()
+        container_stats: Dict = stats_stream.__next__()
 
         if not container_stats['memory_stats'].get('usage', None):
             mb = 0
@@ -61,11 +63,22 @@ def ps(
 
         if status == 'running':
             status = '✅ '+status
-            cpu_usage = container_stats['cpu_stats']['cpu_usage']['total_usage']
-            system_cpu_usage = container_stats['cpu_stats']['system_cpu_usage']
-            cpu_percent = (cpu_usage / system_cpu_usage) * 100
-            cpu_count = container_stats['cpu_stats']['online_cpus']
-            cpu_stats__usage: float = round(cpu_percent*cpu_count, 3)
+
+            cpu_stats = container_stats['cpu_stats']
+            cpu_total_usage = cpu_stats['cpu_usage']['total_usage']
+            cpu_system_usage = cpu_stats['system_cpu_usage']
+
+            precpu_stats = container_stats['precpu_stats']
+            precpu_total_usage = precpu_stats['cpu_usage']['total_usage']
+            precpu_system_usage = precpu_stats['system_cpu_usage']
+
+            nb_core = cpu_count = container_stats['cpu_stats']['online_cpus']
+            cpu_delta = cpu_total_usage - precpu_total_usage
+            system_cpu_delta = cpu_system_usage - precpu_system_usage
+
+            cpu_usage = (cpu_delta / system_cpu_delta) * nb_core * 100.0
+
+            cpu_stats__usage: float = round(cpu_usage, 3)
         else:
             status = '⭕️ '+status
             cpu_stats__usage = 0
