@@ -30,11 +30,11 @@ def get_cpu_usage(container_id):
             precpu_stats = stats_data_json['precpu_stats']
             precpu_total_usage = precpu_stats['cpu_usage']['total_usage']
             precpu_system_usage = precpu_stats['system_cpu_usage']
-            
+
             cpu_delta = cpu_total_usage - precpu_total_usage
             system_cpu_delta = cpu_system_usage - precpu_system_usage
-            
-            nb_core=16
+
+            nb_core = 16
 
             # Calculate CPU usage percentage
             cpu_usage = (cpu_delta / system_cpu_delta) * nb_core * 100.0

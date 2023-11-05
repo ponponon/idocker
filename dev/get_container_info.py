@@ -20,12 +20,19 @@ def get_container_info(container: Container):
 
     container_stats: Dict = container.stats(decode=True).__next__()
 
-    print(json.dumps(container_stats, indent=4))
+    # print(json.dumps(container_stats, indent=4))
 
 
 client = docker.from_env()
 
 
-container = client.containers.get('e2618c7ec2ec')
+container = client.containers.get('1ed0dc5ac54e')
 
 get_container_info(container)
+
+# print(json.dumps(container.attrs,indent=4,ensure_ascii=False))
+
+# print(container.client)
+# print(container.collection)
+# print(json.dumps(container.client,indent=4,ensure_ascii=False))
+# print(json.dumps(container.collection,indent=4,ensure_ascii=False))
