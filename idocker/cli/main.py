@@ -72,7 +72,7 @@ def ps(
             precpu_total_usage = precpu_stats['cpu_usage']['total_usage']
             precpu_system_usage = precpu_stats['system_cpu_usage']
 
-            nb_core = cpu_count = container_stats['cpu_stats']['online_cpus']
+            nb_core = container_stats['cpu_stats']['online_cpus']
             cpu_delta = cpu_total_usage - precpu_total_usage
             system_cpu_delta = cpu_system_usage - precpu_system_usage
 
