@@ -44,6 +44,7 @@ def ps(
         short_id: str = container.short_id
         status: str = container.attrs['State']['Status']
         name: str = container.attrs['Name']
+        restart_count: str = container.attrs['RestartCount']
 
         from docker.models.images import Image
 
@@ -63,7 +64,6 @@ def ps(
 
         if status == 'running':
             status = '✅ '+status
-
             cpu_stats = container_stats['cpu_stats']
             cpu_total_usage = cpu_stats['cpu_usage']['total_usage']
             cpu_system_usage = cpu_stats['system_cpu_usage']
@@ -82,6 +82,9 @@ def ps(
         else:
             status = '⭕️ '+status
             cpu_stats__usage = 0
+
+        if restart_count > 0:
+            status = f'{status}({restart_count})'
 
         containers_info.append(
             [

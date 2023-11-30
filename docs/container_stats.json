@@ -1,0 +1,122 @@
+{
+    "read": "2023-11-30T13:46:32.395493997Z",
+    "preread": "0001-01-01T00:00:00Z",
+    "pids_stats": {
+        "current": 144,
+        "limit": 153990
+    },
+    "blkio_stats": {
+        "io_service_bytes_recursive": [
+            {
+                "major": 8,
+                "minor": 0,
+                "op": "read",
+                "value": 543625216
+            },
+            {
+                "major": 8,
+                "minor": 0,
+                "op": "write",
+                "value": 112578560
+            },
+            {
+                "major": 253,
+                "minor": 0,
+                "op": "read",
+                "value": 543625216
+            },
+            {
+                "major": 253,
+                "minor": 0,
+                "op": "write",
+                "value": 112578560
+            }
+        ],
+        "io_serviced_recursive": null,
+        "io_queue_recursive": null,
+        "io_service_time_recursive": null,
+        "io_wait_time_recursive": null,
+        "io_merged_recursive": null,
+        "io_time_recursive": null,
+        "sectors_recursive": null
+    },
+    "num_procs": 0,
+    "storage_stats": {},
+    "cpu_stats": {
+        "cpu_usage": {
+            "total_usage": 110876747000,
+            "usage_in_kernelmode": 25539701000,
+            "usage_in_usermode": 85337045000
+        },
+        "system_cpu_usage": 34640380000000,
+        "online_cpus": 32,
+        "throttling_data": {
+            "periods": 0,
+            "throttled_periods": 0,
+            "throttled_time": 0
+        }
+    },
+    "precpu_stats": {
+        "cpu_usage": {
+            "total_usage": 0,
+            "usage_in_kernelmode": 0,
+            "usage_in_usermode": 0
+        },
+        "throttling_data": {
+            "periods": 0,
+            "throttled_periods": 0,
+            "throttled_time": 0
+        }
+    },
+    "memory_stats": {
+        "usage": 538443776,
+        "stats": {
+            "active_anon": 8192,
+            "active_file": 14991360,
+            "anon": 150712320,
+            "anon_thp": 0,
+            "file": 375812096,
+            "file_dirty": 24576,
+            "file_mapped": 140140544,
+            "file_writeback": 0,
+            "inactive_anon": 153837568,
+            "inactive_file": 357683200,
+            "kernel_stack": 2359296,
+            "pgactivate": 3433,
+            "pgdeactivate": 0,
+            "pgfault": 240251,
+            "pglazyfree": 0,
+            "pglazyfreed": 0,
+            "pgmajfault": 187,
+            "pgrefill": 0,
+            "pgscan": 0,
+            "pgsteal": 0,
+            "shmem": 3137536,
+            "slab": 6718888,
+            "slab_reclaimable": 4916912,
+            "slab_unreclaimable": 1801976,
+            "sock": 86016,
+            "thp_collapse_alloc": 0,
+            "thp_fault_alloc": 0,
+            "unevictable": 0,
+            "workingset_activate": 0,
+            "workingset_nodereclaim": 0,
+            "workingset_refault": 0
+        },
+        "limit": 134767722496
+    },
+    "name": "/milvus-standalone",
+    "id": "355ed2f6dc70051a846187bd950ee5bcd57e272c96a71db1ae92fb8b5cc93422",
+    "networks": {
+        "eth0": {
+            "rx_bytes": 3202827,
+            "rx_packets": 6285,
+            "rx_errors": 0,
+            "rx_dropped": 0,
+            "tx_bytes": 897852,
+            "tx_packets": 9294,
+            "tx_errors": 0,
+            "tx_dropped": 0
+        }
+    }
+}
