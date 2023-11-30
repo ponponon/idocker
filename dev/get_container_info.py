@@ -29,4 +29,12 @@ client = docker.from_env()
 
 container = client.containers.get('355ed2f6dc70')
 
+
 get_container_info(container)
+
+# print(json.dumps(container.attrs,indent=4,ensure_ascii=False))
+
+# print(container.client)
+# print(container.collection)
+# print(json.dumps(container.client,indent=4,ensure_ascii=False))
+# print(json.dumps(container.collection,indent=4,ensure_ascii=False))
