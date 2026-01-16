@@ -2,3 +2,4 @@ autopep8
 psutil
 twine
 ruff
+build
