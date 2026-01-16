@@ -205,7 +205,7 @@ def logs(container_name: str, tail: int = 300, follow: bool = True):
     )
 
     for line in logs_stream:
-        print(line.decode('utf-8').rstrip())
+        console.print(line.decode('utf-8').rstrip(), markup=False)
 
 
 cli = click.CommandCollection(sources=[idocker_cli])
