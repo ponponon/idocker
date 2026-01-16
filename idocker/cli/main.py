@@ -27,7 +27,7 @@ def idocker_cli():
 @click.option('--name', type=bool, is_flag=True, show_default=True, default=False, help='Sort by name')
 @click.option('--cpu', type=bool, is_flag=True, show_default=True, default=False, help='Sort by cpu stats usage')
 @click.option('--mem', type=bool, is_flag=True,  show_default=True, default=False, help='Sort by memory stats usage')
-@click.option('-i', '--image_name', type=bool, is_flag=True,  show_default=True, default=False, help='Show Image name')
+@click.option('-i', '-a', '--image_name', type=bool, is_flag=True,  show_default=True, default=False, help='Show Image name')
 def ps(
     id: bool = False,
     status: bool = False,
