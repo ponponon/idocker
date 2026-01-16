@@ -180,6 +180,32 @@ def port():
             print()
 
 
+@idocker_cli.command()
+@click.argument('container_name', type=str)
+@click.option('--tail', type=int, default=300, show_default=True, help='Number of lines to show from the end')
+@click.option('--no-follow', 'follow', is_flag=True, default=True, help='Do not follow output')
+def logs(container_name: str, tail: int = 300, follow: bool = True):
+    """View container logs (default: show last 300 lines and follow)"""
+    client = docker.from_env()
+
+    try:
+        container = client.containers.get(container_name)
+    except docker.errors.NotFound:
+        console.print(f"Container '{container_name}' not found", style='#c85662')
+        return
+
+    console.print(f"Showing logs for container: [bold]{container.name}[/bold]", style='#62ae90')
+
+    logs_stream = container.logs(
+        stream=True,
+        follow=follow,
+        tail=tail
+    )
+
+    for line in logs_stream:
+        print(line.decode('utf-8').rstrip())
+
+
 cli = click.CommandCollection(sources=[idocker_cli])
 
 if __name__ == '__main__':
