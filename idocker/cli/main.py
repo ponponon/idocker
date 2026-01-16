@@ -191,10 +191,12 @@ def logs(container_name: str, tail: int = 300, follow: bool = True):
     try:
         container = client.containers.get(container_name)
     except docker.errors.NotFound:
-        console.print(f"Container '{container_name}' not found", style='#c85662')
+        console.print(
+            f"Container '{container_name}' not found", style='#c85662')
         return
 
-    console.print(f"Showing logs for container: [bold]{container.name}[/bold]", style='#62ae90')
+    console.print(
+        f"Showing logs for container: [bold]{container.name}[/bold]", style='#62ae90')
 
     logs_stream = container.logs(
         stream=True,
